@@ -26,6 +26,19 @@ const Login = () => {
   const handleGoogle = () => {
     googleSignin()
     .then(result => {
+        const name = result.user?.displayName;
+        const email = result.user?.email;
+        const image = result.user?.photoURL;
+        const role = "worker";
+        const coin = 10;
+        const userData = { name, email, image, role, coin };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
         console.log(result.user)
         toast.success("Login success")
     })

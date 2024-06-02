@@ -7,6 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Register = () => {
+  const { user } = useAuth();
   const { createuser, updateUserProfile, googleSignin } = useAuth();
   const [passwordError, setPasswordError] = useState();
 
@@ -19,7 +20,7 @@ const Register = () => {
     const image = form.photo.value;
     const role = form.role.value;
     let coin = role === "worker" ? 10 : 50;
-    console.log(name, email, password, image, role, coin);
+    const userData = { name, email, image, role, coin };
 
     setPasswordError("");
 
@@ -41,24 +42,45 @@ const Register = () => {
     createuser(email, password)
       .then((result) => {
         updateUserProfile(name, image).then(() => {
+          fetch("http://localhost:5000/users", {
+            method: "POST",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(userData),
+          });
+          toast.success("registration successfully");
           console.log(result.user);
-          toast.success('registration successfully')
         });
       })
       .catch((error) => {
         console.log(error.message);
-        toast.error('email exist')
+        toast.error("email exist");
       });
   };
 
   const handleGoogle = () => {
+
     googleSignin()
-    .then(result => {
-        console.log(result.user)
-        toast.success("Login success")
-    })
-    .catch()
-  }
+      .then((result) => {
+        const name = result.user?.displayName;
+        const email = result.user?.email;
+        const image = result.user?.photoURL;
+        const role = "worker";
+        const coin = 10;
+        const userData = { name, email, image, role, coin };
+        fetch("http://localhost:5000/users", {
+          method: "POST",
+          headers: {
+            "content-type": "application/json",
+          },
+          body: JSON.stringify(userData),
+        });
+        console.log(result.user);
+        toast.success("Login success");
+      })
+      .catch();
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -136,8 +158,8 @@ const Register = () => {
                 />
                 {/* <span  className="relative -top-7 left-64 lg:left-72   text-gray-600" onClick={() => setShowPassword(!showPassword)}>{showPassword ? (<FaRegEyeSlash />) : (<FaRegEye />)}</span> */}
                 {passwordError && (
-              <p className="text-red-500 text-sm">{passwordError}</p>
-            )}
+                  <p className="text-red-500 text-sm">{passwordError}</p>
+                )}
               </div>
             </div>
             <div>
@@ -172,7 +194,10 @@ const Register = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <button onClick={handleGoogle} className="disabled:cursor-not-allowed cursor-pointer flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
+        <button
+          onClick={handleGoogle}
+          className="disabled:cursor-not-allowed cursor-pointer flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer"
+        >
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
