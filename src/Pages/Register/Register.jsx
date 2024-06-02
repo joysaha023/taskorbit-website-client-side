@@ -1,10 +1,15 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 // import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
+import useAuth from "../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Register = () => {
+  const { createuser, updateUserProfile, googleSignin } = useAuth();
+  const [passwordError, setPasswordError] = useState();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const form = e.target;
@@ -14,8 +19,36 @@ const Register = () => {
     const image = form.photo.value;
     const role = form.role.value;
     let coin = role === "worker" ? 10 : 50;
-
     console.log(name, email, password, image, role, coin);
+
+    setPasswordError("");
+
+    if (password.length == "") {
+      setPasswordError("Password field is required");
+      return;
+    } else if (password.length < 6) {
+      setPasswordError("Password should be 6 character or longer ");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setPasswordError("add at least one uppercase later");
+      return;
+    } else if (!/[a-z]/.test(password)) {
+      setPasswordError("add at least one lowercase later");
+      return;
+    }
+
+    //create user
+    createuser(email, password)
+      .then((result) => {
+        updateUserProfile(name, image).then(() => {
+          console.log(result.user);
+          toast.success('registration successfully')
+        });
+      })
+      .catch((error) => {
+        console.log(error.message);
+        toast.error('email exist')
+      });
   };
 
   return (
@@ -35,7 +68,6 @@ const Register = () => {
               <input
                 type="text"
                 name="name"
-                id="name"
                 placeholder="Enter Your Name Here"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
@@ -46,7 +78,6 @@ const Register = () => {
               <input
                 type="text"
                 name="photo"
-                id="name"
                 placeholder="Photo URL"
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
@@ -95,6 +126,9 @@ const Register = () => {
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 />
                 {/* <span  className="relative -top-7 left-64 lg:left-72   text-gray-600" onClick={() => setShowPassword(!showPassword)}>{showPassword ? (<FaRegEyeSlash />) : (<FaRegEye />)}</span> */}
+                {passwordError && (
+              <p className="text-red-500 text-sm">{passwordError}</p>
+            )}
               </div>
             </div>
             <div>
