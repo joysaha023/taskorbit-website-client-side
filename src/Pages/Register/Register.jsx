@@ -1,27 +1,22 @@
+import axios from "axios";
 import React, { useState } from "react";
 // import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
 import { Link } from "react-router-dom";
 
 const Register = () => {
-  
-    const handleSubmit = (e) => {
-        e.preventDefault()
-        const form = e.target
-        const name = form.name.value
-        const email = form.email.value
-        const password = form.password.value
-        const image = form.image.files[0]
-        const role = form.role.value
-        let coin;
-        if(role === "worker"){
-            coin = 10;
-        }else{
-            coin = 50;
-        }
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const name = form.name.value;
+    const email = form.email.value;
+    const password = form.password.value;
+    const image = form.photo.value;
+    const role = form.role.value;
+    let coin = role === "worker" ? 10 : 50;
 
-        console.log(name, email, password, image, role, coin)
-    }
+    console.log(name, email, password, image, role, coin);
+  };
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -31,8 +26,7 @@ const Register = () => {
           <p className="text-sm text-gray-400">Welcome to TaskOrbit</p>
         </div>
         <form
-            onSubmit={handleSubmit}
-
+          onSubmit={handleSubmit}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
@@ -48,6 +42,17 @@ const Register = () => {
               />
             </div>
             <div>
+              <label className="block mb-2 text-sm">Photo URL</label>
+              <input
+                type="text"
+                name="photo"
+                id="name"
+                placeholder="Photo URL"
+                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                data-temp-mail-org="0"
+              />
+            </div>
+            {/* <div>
               <label htmlFor="image" className="block mb-2 text-sm">
                 Select Image:
               </label>
@@ -58,7 +63,7 @@ const Register = () => {
                 name="image"
                 accept="image/*"
               />
-            </div>
+            </div> */}
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
@@ -80,16 +85,16 @@ const Register = () => {
                 </label>
               </div>
               <div>
-              <input
-                type="password"
-                name="password"
-                autoComplete="new-password"
-                id="password"
-                required
-                placeholder="*******"
-                className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
-              />
-              {/* <span  className="relative -top-7 left-64 lg:left-72   text-gray-600" onClick={() => setShowPassword(!showPassword)}>{showPassword ? (<FaRegEyeSlash />) : (<FaRegEye />)}</span> */}
+                <input
+                  type="password"
+                  name="password"
+                  autoComplete="new-password"
+                  id="password"
+                  required
+                  placeholder="*******"
+                  className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
+                />
+                {/* <span  className="relative -top-7 left-64 lg:left-72   text-gray-600" onClick={() => setShowPassword(!showPassword)}>{showPassword ? (<FaRegEyeSlash />) : (<FaRegEye />)}</span> */}
               </div>
             </div>
             <div>
