@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Login = () => {
-  const { SignIn } = useAuth();
+  const { SignIn, googleSignin } = useAuth();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -22,6 +22,15 @@ const Login = () => {
         toast.error('incorrect password')
     })
   };
+
+  const handleGoogle = () => {
+    googleSignin()
+    .then(result => {
+        console.log(result.user)
+        toast.success("Login success")
+    })
+    .catch()
+  }
 
   return (
     <div className="flex justify-center items-center min-h-screen">
@@ -90,7 +99,7 @@ const Login = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <div className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
+        <div onClick={handleGoogle} className="flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>

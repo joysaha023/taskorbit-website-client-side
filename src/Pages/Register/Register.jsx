@@ -51,6 +51,15 @@ const Register = () => {
       });
   };
 
+  const handleGoogle = () => {
+    googleSignin()
+    .then(result => {
+        console.log(result.user)
+        toast.success("Login success")
+    })
+    .catch()
+  }
+
   return (
     <div className="flex justify-center items-center min-h-screen">
       <div className="flex flex-col max-w-md p-6 rounded-md sm:p-10 bg-gray-100 text-gray-900">
@@ -163,7 +172,7 @@ const Register = () => {
           </p>
           <div className="flex-1 h-px sm:w-16 dark:bg-gray-700"></div>
         </div>
-        <button className="disabled:cursor-not-allowed cursor-pointer flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
+        <button onClick={handleGoogle} className="disabled:cursor-not-allowed cursor-pointer flex justify-center items-center space-x-2 border m-3 p-2 border-gray-300 border-rounded cursor-pointer">
           <FcGoogle size={32} />
 
           <p>Continue with Google</p>
