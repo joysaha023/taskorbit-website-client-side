@@ -2,8 +2,18 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/logo.png";
 import { MdOndemandVideo } from "react-icons/md";
+import useAuth from "../../../Hooks/useAuth";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
+  const { user, logOut } = useAuth();
+
+  const handlelogout = () => {
+    logOut().then((result) => {
+      toast.error("LogOut");
+    });
+  };
+
   return (
     <div className="max-w-6xl mx-auto">
       <div className="navbar bg-base-100">
@@ -30,53 +40,95 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
               <li>
-                <a>Item 1</a>
+                <a>Home</a>
               </li>
               <li>
-                <a>Parent</a>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
+                <a>Tasks</a>
               </li>
               <li>
-                <a>Item 3</a>
+                <a>Contact Us</a>
               </li>
             </ul>
           </div>
-          <Link to="/" ><img className="w-full h-[40px] md:h-[60px]" src={logo} alt="" /></Link>
+          <Link to="/">
+            <img className="w-full h-[40px] md:h-[60px]" src={logo} alt="" />
+          </Link>
         </div>
-        <div className="navbar-end hidden lg:flex">
+        <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
             <li>
-              <a>Item 1</a>
+              <Link to="/">Home</Link>
             </li>
             <li>
-              <details>
-                <summary>Parent</summary>
-                <ul className="p-2">
-                  <li>
-                    <a>Submenu 1</a>
-                  </li>
-                  <li>
-                    <a>Submenu 2</a>
-                  </li>
-                </ul>
-              </details>
+              <a>Tasks</a>
             </li>
             <li>
-              <a>Item 3</a>
+              <a>Contact Us</a>
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <a className="btn"><MdOndemandVideo /> Demo</a>
-          <Link to="/login" className="btn">Login</Link>
-          <Link to="/register" className="btn">Register</Link>
+          {user ? (
+            <div className="flex">
+              <div>
+                <button className="btn">
+                  Inbox
+                  <div className="">+99</div>
+                </button>
+              </div>
+              <div className="dropdown dropdown-hover dropdown-end">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-content={user?.displayName}
+                  data-tooltip-place="left"
+                >
+                  <div className="w-10 rounded-full">
+                    <img
+                      title={user?.displayName}
+                      alt="Tailwind CSS Navbar component"
+                      src={
+                        user?.photoURL || "https://i.ibb.co/6JyZF0K/user.png"
+                      }
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex={0}
+                  className="dropdown-content z-[20] menu p-2 shadow bg-base-100 rounded-box w-52"
+                >
+                  <li>
+                    <a className="justify-between">
+                      {user?.displayName || "User"}
+                    </a>
+                  </li>
+                </ul>
+              </div>
+              <Link to="" className="btn">
+                Dashboard
+              </Link>
+              <button
+                onClick={handlelogout}
+                className="btn btn-md rounded-full btn-error"
+              >
+                Log Out
+              </button>
+            </div>
+          ) : (
+            <div>
+              <a className="btn">
+                <MdOndemandVideo /> Demo
+              </a>
+              <Link to="/login" className="btn">
+                Login
+              </Link>
+              <Link to="/register" className="btn">
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

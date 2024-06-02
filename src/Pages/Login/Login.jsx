@@ -12,14 +12,14 @@ const Login = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
-
+    
     SignIn(email, password)
     .then(result => {
         console.log(result.user)
         toast.success('success')
     })
     .catch(error => {
-        toast.warning('incorrect password')
+        toast.error('incorrect password')
     })
   };
 
@@ -33,7 +33,7 @@ const Login = () => {
           </p>
         </div>
         <form
-          onClick={handleLogin}
+          onSubmit={handleLogin}
           className="space-y-6 ng-untouched ng-pristine ng-valid"
         >
           <div className="space-y-4">
