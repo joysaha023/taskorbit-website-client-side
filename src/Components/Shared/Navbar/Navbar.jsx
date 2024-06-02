@@ -75,8 +75,8 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           <a className="btn"><MdOndemandVideo /> Demo</a>
-          <a className="btn">Login</a>
-          <a className="btn">Register</a>
+          <Link to="/login" className="btn">Login</Link>
+          <Link to="/register" className="btn">Register</Link>
         </div>
       </div>
     </div>
