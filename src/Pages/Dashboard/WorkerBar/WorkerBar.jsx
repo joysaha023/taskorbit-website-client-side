@@ -10,12 +10,12 @@ const WorkerBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/order/salad">
+          <NavLink to="/dashboard/tasklist">
              Task List
           </NavLink>
         </li>
         <li>
-          <NavLink to="/order/salad">
+          <NavLink to="/dashboard/workersubmission">
              My Submission
           </NavLink>
         </li>

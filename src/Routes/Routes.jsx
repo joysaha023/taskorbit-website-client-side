@@ -5,6 +5,8 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import Dashboard from "../Layouts/Dashboard";
 import WorkerHome from "../Pages/Dashboard/WorkerHome/WorkerHome"
+import TaskList from "../Pages/Dashboard/TaskList/TaskList";
+import WorkerSubmission from "../Pages/Dashboard/WorkerSubmission/WorkerSubmission";
 
 const router = createBrowserRouter([
   {
@@ -35,6 +37,14 @@ const router = createBrowserRouter([
       {
         path: 'workerhome',
         element: <WorkerHome></WorkerHome>
+      },
+      {
+        path: 'tasklist',
+        element: <TaskList></TaskList>
+      },
+      {
+        path: 'workersubmission',
+        element: <WorkerSubmission></WorkerSubmission>
       }
     ]
   },
