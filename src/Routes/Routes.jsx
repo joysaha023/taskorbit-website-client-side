@@ -7,6 +7,11 @@ import Dashboard from "../Layouts/Dashboard";
 import WorkerHome from "../Pages/Dashboard/WorkerHome/WorkerHome"
 import TaskList from "../Pages/Dashboard/TaskList/TaskList";
 import WorkerSubmission from "../Pages/Dashboard/WorkerSubmission/WorkerSubmission";
+import CreatorHome from "../Pages/Dashboard/CreatorHome/CreatorHome";
+import AddTask from "../Pages/Dashboard/AddTask/AddTask";
+import CreatorTask from "../Pages/Dashboard/CreatorTask/CreatorTask";
+import PurchaseCoin from "../Pages/Dashboard/PurchaseCoin/PurchaseCoin";
+import PaymentHistory from "../Pages/Dashboard/PaymentHistory/PaymentHistory";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +50,28 @@ const router = createBrowserRouter([
       {
         path: 'workersubmission',
         element: <WorkerSubmission></WorkerSubmission>
+      },
+
+      //Task creator routes
+      {
+        path: 'creatorHome',
+        element: <CreatorHome></CreatorHome>
+      },
+      {
+        path: 'AddTask',
+        element: <AddTask></AddTask>
+      },
+      {
+        path: 'creatortask',
+        element: <CreatorTask></CreatorTask>
+      },
+      {
+        path: 'parchaseCoin',
+        element: <PurchaseCoin></PurchaseCoin>
+      },
+      {
+        path: 'paymentHistory',
+        element: <PaymentHistory></PaymentHistory>
       }
     ]
   },

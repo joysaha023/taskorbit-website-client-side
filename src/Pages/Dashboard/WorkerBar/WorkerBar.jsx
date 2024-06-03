@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const WorkerBar = () => {
     return (
-        <div>
+        <div className='space-y-2'>
             <li>
           <NavLink to="/dashboard/workerhome">
             My Home
