@@ -4,6 +4,7 @@ import logo from "../../../assets/logo.png";
 import { MdOndemandVideo } from "react-icons/md";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import RedirectButton from "../../RedirectButton/RedirectButton";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
@@ -118,9 +119,7 @@ const Navbar = () => {
             </div>
           ) : (
             <div>
-              <a className="btn">
-                <MdOndemandVideo /> Demo
-              </a>
+              <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
               <Link to="/login" className="btn">
                 Login
               </Link>
