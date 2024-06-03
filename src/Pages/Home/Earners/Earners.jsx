@@ -7,7 +7,7 @@ const Earners = () => {
         <h2 className="text-3xl md:text-4xl font-bold">Top Earners</h2>
       </div>
       <div>
-        <div className="card w-96 bg-base-100 shadow-xl">
+        <div className="card w-full bg-base-100 shadow-xl">
           <figure>
             <img
               src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
