@@ -6,7 +6,7 @@ import "./Banner.css";
 
 const Banner = () => {
   return (
-    <Carousel className="main-slide">
+    <Carousel autoPlay={true} infiniteLoop={true} className="main-slide">
       <div>
         <img
           className="h-[40vh] md:h-[80vh]"
