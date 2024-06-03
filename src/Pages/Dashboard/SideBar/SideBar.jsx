@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import WorkerBar from "../WorkerBar/WorkerBar";
 import CreatorBar from "../CreatorBar/CreatorBar";
+import AdminBar from "../AdminBar/AdminBar";
 
 const SideBar = () => {
   return (
@@ -9,7 +10,8 @@ const SideBar = () => {
       <ul className="menu p-4 space-y-2">
 
         {/* <WorkerBar></WorkerBar> */}
-        <CreatorBar></CreatorBar>
+        {/* <CreatorBar></CreatorBar> */}
+        <AdminBar></AdminBar>
 
 
       <div className="divider"></div>
