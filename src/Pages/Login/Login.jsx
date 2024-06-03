@@ -96,7 +96,7 @@ const Login = () => {
               type="submit"
               className="bg-rose-500 w-full rounded-md py-3 text-white"
             >
-              Continue
+              Login
             </button>
           </div>
         </form>

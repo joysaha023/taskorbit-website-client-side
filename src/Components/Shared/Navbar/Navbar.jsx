@@ -107,7 +107,7 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-              <Link to="" className="btn">
+              <Link to="/dashboard" className="btn">
                 Dashboard
               </Link>
               <button

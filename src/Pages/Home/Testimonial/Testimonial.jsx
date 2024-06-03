@@ -21,10 +21,22 @@ const Testimonial = () => {
         <h2 className="text-3xl md:text-4xl font-bold">Testimonial</h2>
       </div>
       <div className="px-6">
-        <Swiper navigation={true} modules={[Navigation]} className="mySwiper">
+        <Swiper
+          autoplay={{
+            delay: 3000,
+            disableOnInteraction: false,
+          }}
+          loop={true}
+          navigation={true}
+          modules={[Navigation]}
+          className="mySwiper"
+        >
           {reviews.map((review) => (
             <SwiperSlide key={review._id}>
               <div className="flex flex-col justify-center space-y-4 items-center mx-24 my-16">
+                <div className="w-24 h-24">
+                  <img className="rounded-full" src={review.photo_url} />
+                </div>
                 <h3 className="text-xl md:text-2xl text-orange-400">
                   {review.user_name}
                 </h3>

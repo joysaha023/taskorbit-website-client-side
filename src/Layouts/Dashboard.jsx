@@ -1,9 +1,16 @@
 import React from 'react';
+import { Outlet } from 'react-router-dom';
 
 const Dashboard = () => {
     return (
         <div>
-            <h2>Hello dashboard</h2>
+            {/* Sidebar */}
+            <div>Sidebar</div>
+
+            {/* Outlet --> Dynamic content */}
+            <div>
+                <Outlet></Outlet>
+            </div>
         </div>
     );
 };
