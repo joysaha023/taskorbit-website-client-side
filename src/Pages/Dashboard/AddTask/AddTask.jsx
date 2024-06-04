@@ -80,6 +80,7 @@ const AddTask = () => {
             <div className="mt-2">
               <input
                 type="file"
+                name="file"
                 className="file-input file-input-bordered w-full max-w-xs"
               />
             </div>
