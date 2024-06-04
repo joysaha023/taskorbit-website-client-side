@@ -8,7 +8,7 @@ import RedirectButton from "../../RedirectButton/RedirectButton";
 import useRole from "../../../Hooks/useRole";
 
 const Navbar = () => {
-
+  const [data] = useRole();
   const { user, logOut } = useAuth();
 
   const handlelogout = () => {
@@ -75,7 +75,7 @@ const Navbar = () => {
             <div className="flex">
               <div>
                 <button className="btn">
-                  Coin :<div className="">1000</div>
+                  Coin :<div className="">{data?.coin}</div>
                 </button>
               </div>
               <div className="dropdown dropdown-hover dropdown-end">

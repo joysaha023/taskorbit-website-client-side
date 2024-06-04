@@ -2,10 +2,11 @@ import React from "react";
 import { Link, Outlet } from "react-router-dom";
 import SideBar from "../Pages/Dashboard/SideBar/SideBar";
 import logo from "../assets/logo.png";
-// import useUser from "../Hooks/useUser";
+import useRole from "../Hooks/useRole";
+
 
 const Dashboard = () => {
-// const [data] = useUser();
+const [data] = useRole()
 
 
 
@@ -49,13 +50,13 @@ const Dashboard = () => {
           </div>
           <div className="navbar-end">
             <div className="border rounded-3xl p-2 bg-blue-300">
-              {/* <h2>coin: {data.coin} </h2> */}
+              <h2>coin: {data?.coin} </h2>
             </div>
             <div className="px-4">
               <div className="avatar ">
-                <div className="w-8 rounded-full">
+                <div className="w-10 rounded-full">
                   <img
-                    // src={data.image}
+                    src={data?.image}
                     alt="Tailwind-CSS-Avatar-component"
                   />
                 </div>
@@ -63,8 +64,8 @@ const Dashboard = () => {
               </div>
             </div>
             <div>
-                {/* <h2 className="text-sm">{data.name}</h2>
-                <h2>{data.role}</h2> */}
+                <h2 className="text-sm">{data?.name}</h2>
+                <h2>{data?.role}</h2>
             </div>
             <div className=" px-4">
               <div className="indicator ">

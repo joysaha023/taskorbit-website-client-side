@@ -6,16 +6,16 @@ import axios from 'axios';
 const useRole = () => {
     const {user} = useAuth();
 
-    const {data:role, isPending} =useQuery({
+    const {data, isPending} =useQuery({
         queryKey: [user?.email],
         queryFn: async() => {
             const res = await axios.get(`http://localhost:5000/users/role/${user.email}`)
            
-            return res.data?.role;
+            return res.data;
         }
     })
 
-    return [role, isPending]
+    return [data, isPending]
 };
 
 export default useRole;
