@@ -16,6 +16,7 @@ import AdminHome from "../Pages/Dashboard/AdminHome/AdminHome";
 import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManageTask from "../Pages/Dashboard/ManageTask/ManageTask";
 import PrivateRoutes from "./PrivateRoutes";
+import Contact from "../Pages/Contact/Contact";
 
 
 const router = createBrowserRouter([
@@ -27,6 +28,14 @@ const router = createBrowserRouter([
         path: "/",
         element: <Home></Home>,
       },
+      {
+        path: "/dashboard/tasklist",
+        element: <TaskList></TaskList>
+      },
+      {
+        path: "/contact",
+        element: <Contact></Contact>
+      }
     ],
   },
   {
