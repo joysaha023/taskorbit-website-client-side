@@ -1,11 +1,12 @@
 import React from "react";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
 const Login = () => {
   const { SignIn, googleSignin } = useAuth();
+  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -17,6 +18,7 @@ const Login = () => {
     .then(result => {
         console.log(result.user)
         toast.success('success')
+        navigate("/dashboard")
     })
     .catch(error => {
         toast.error('incorrect password')
@@ -41,6 +43,7 @@ const Login = () => {
         });
         console.log(result.user)
         toast.success("Login success")
+        navigate("/dashboard")
     })
     .catch()
   }

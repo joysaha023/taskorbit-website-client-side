@@ -64,8 +64,8 @@ const [data] = useRole()
               </div>
             </div>
             <div>
-                <h2 className="text-sm">{data?.name}</h2>
-                <h2>{data?.role}</h2>
+                <h2 className="text-base">{data?.name}</h2>
+                <h2 className="text-sm">{data?.role}</h2>
             </div>
             <div className=" px-4">
               <div className="indicator ">

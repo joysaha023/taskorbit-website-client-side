@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useContext, useState } from "react";
 // import { FaRegEye, FaRegEyeSlash } from "react-icons/fa6";
 import { FcGoogle } from "react-icons/fc";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
 
@@ -10,6 +10,7 @@ const Register = () => {
   const { user } = useAuth();
   const { createuser, updateUserProfile, googleSignin } = useAuth();
   const [passwordError, setPasswordError] = useState();
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -51,6 +52,7 @@ const Register = () => {
           });
           toast.success("registration successfully");
           console.log(result.user);
+          navigate("/")
         });
       })
       .catch((error) => {
@@ -78,6 +80,7 @@ const Register = () => {
         });
         console.log(result.user);
         toast.success("Login success");
+        navigate("/")
       })
       .catch();
   };
