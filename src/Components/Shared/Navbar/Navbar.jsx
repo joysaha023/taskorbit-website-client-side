@@ -5,8 +5,10 @@ import { MdOndemandVideo } from "react-icons/md";
 import useAuth from "../../../Hooks/useAuth";
 import toast from "react-hot-toast";
 import RedirectButton from "../../RedirectButton/RedirectButton";
+import useRole from "../../../Hooks/useRole";
 
 const Navbar = () => {
+
   const { user, logOut } = useAuth();
 
   const handlelogout = () => {
@@ -73,8 +75,7 @@ const Navbar = () => {
             <div className="flex">
               <div>
                 <button className="btn">
-                  Inbox
-                  <div className="">+99</div>
+                  Coin :<div className="">1000</div>
                 </button>
               </div>
               <div className="dropdown dropdown-hover dropdown-end">

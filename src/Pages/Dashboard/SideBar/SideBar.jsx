@@ -6,14 +6,14 @@ import AdminBar from "../AdminBar/AdminBar";
 import useRole from "../../../Hooks/useRole";
 
 const SideBar = () => {
-  const [data] = useRole();
-
+  const [role] = useRole();
+ 
   return (
     <div>
       <ul className="menu p-4 space-y-2">
-        {data.role === "TaskCreator" && <CreatorBar></CreatorBar>}
-        {data.role === "worker" && <WorkerBar></WorkerBar>}
-        {data.role === "admin" && <AdminBar></AdminBar>}
+        {role === "TaskCreator" && <CreatorBar></CreatorBar>}
+        {role === "worker" && <WorkerBar></WorkerBar>}
+        {role === "admin" && <AdminBar></AdminBar>}
 
         <div className="divider"></div>
         <li>
