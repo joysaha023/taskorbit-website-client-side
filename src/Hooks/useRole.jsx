@@ -11,7 +11,7 @@ const useRole = () => {
         queryFn: async() => {
             const res = await axios.get(`http://localhost:5000/users/role/${user.email}`)
             console.log(res.data)
-            return res.data.role;
+            return res.data;
         }
     })
 
