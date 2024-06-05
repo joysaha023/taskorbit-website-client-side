@@ -5,6 +5,7 @@ import { FcGoogle } from "react-icons/fc";
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { imageUpload } from "../../api/utils";
 
 const Register = () => {
   const { user } = useAuth();
@@ -18,7 +19,8 @@ const Register = () => {
     const name = form.name.value;
     const email = form.email.value;
     const password = form.password.value;
-    const image = form.photo.value;
+    const image_link = form.image.files[0]
+    const image = await imageUpload(image_link)
     const role = form.role.value;
     let coin = role === "worker" ? 10 : 50;
     const userData = { name, email, image, role, coin };
@@ -107,7 +109,7 @@ const Register = () => {
                 data-temp-mail-org="0"
               />
             </div>
-            <div>
+            {/* <div>
               <label className="block mb-2 text-sm">Photo URL</label>
               <input
                 type="text"
@@ -116,8 +118,8 @@ const Register = () => {
                 className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
                 data-temp-mail-org="0"
               />
-            </div>
-            {/* <div>
+            </div> */}
+            <div>
               <label htmlFor="image" className="block mb-2 text-sm">
                 Select Image:
               </label>
@@ -128,7 +130,7 @@ const Register = () => {
                 name="image"
                 accept="image/*"
               />
-            </div> */}
+            </div>
             <div>
               <label htmlFor="email" className="block mb-2 text-sm">
                 Email address
