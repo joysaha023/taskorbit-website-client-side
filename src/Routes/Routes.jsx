@@ -17,6 +17,7 @@ import ManageUsers from "../Pages/Dashboard/ManageUsers/ManageUsers";
 import ManageTask from "../Pages/Dashboard/ManageTask/ManageTask";
 import PrivateRoutes from "./PrivateRoutes";
 import Contact from "../Pages/Contact/Contact";
+import Taskupdate from "../Pages/Dashboard/Taskupdate/Taskupdate";
 
 
 const router = createBrowserRouter([
@@ -86,6 +87,10 @@ const router = createBrowserRouter([
       {
         path: 'paymentHistory',
         element: <PaymentHistory></PaymentHistory>
+      },
+      {
+        path: 'taskUpdate/:id',
+        element: <Taskupdate></Taskupdate>
       },
 
       // Admin Routes

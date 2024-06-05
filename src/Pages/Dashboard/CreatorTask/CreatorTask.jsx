@@ -66,7 +66,7 @@ const CreatorTask = () => {
                   <td>{item.payable_amount}</td>
                   <td>
                     <div className="flex gap-2">
-                      <Link className="btn btn-primary">
+                      <Link to={`/dashboard/taskUpdate/${item._id}`} className="btn btn-primary">
                         <FiEdit />
                       </Link>
                       <button
