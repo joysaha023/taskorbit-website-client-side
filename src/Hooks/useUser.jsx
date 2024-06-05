@@ -1,19 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import useAuth from './useAuth';
+import React from "react";
+import axios from "axios";
+import { useQuery } from "@tanstack/react-query";
 
 const useUser = () => {
-    const {user} = useAuth();
-    const [data, setData] = useState();
+  const { data, isPending, refetch } = useQuery({
+    queryKey: ["users"],
+    queryFn: async () => {
+      const res = await axios.get(`http://localhost:5000/users`);
 
-    useEffect(()=> {
-        fetch(`http://localhost:5000/users/user/${user.email}`)
-        .then((res) => res.json())
-        .then((data) => {
-            setData(data)
-        })
-    }, [])
+      return res.data;
+    },
+  });
 
-    return [data]
+  return [data, isPending, refetch];
 };
 
 export default useUser;
