@@ -50,7 +50,7 @@ const ManageUsers = () => {
                   </td>
                   <td>{item.role}</td>
                   <td>{item.coin}</td>
-                  <th>
+                  <th className="flex gap-2 items-center">
                     <div className="dropdown dropdown-end">
                       <div tabIndex={0} role="button" className="btn m-1">
                         <FaUsers></FaUsers>
