@@ -1,6 +1,44 @@
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 import React from "react";
+import { FiEdit, FiTrash } from "react-icons/fi";
+import { Link } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const CreatorTask = () => {
+  const { data: task = [], refetch } = useQuery({
+    queryKey: ["task"],
+    queryFn: async () => {
+      const res = await axios.get("http://localhost:5000/task");
+      return res.data;
+    },
+  });
+
+  const handleDelete = (task) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/delete/${task._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div>
       <div>
@@ -20,28 +58,27 @@ const CreatorTask = () => {
               </tr>
             </thead>
             <tbody>
-              {/* row 1 */}
-              <tr>
-                <th>1</th>
-                <td>Like Tiktok Video </td>
-                <td>05</td>
-                <td>10</td>
-                <td>update, delete</td>
-              </tr>
-              {/* row 2 */}
-              <tr>
-                <th>2</th>
-                <td>Hart Hagerty</td>
-                <td>Desktop Support Technician</td>
-                <td>Purple</td>
-              </tr>
-              {/* row 3 */}
-              <tr>
-                <th>3</th>
-                <td>Brice Swyre</td>
-                <td>Tax Accountant</td>
-                <td>Red</td>
-              </tr>
+              {task.map((item, idx) => (
+                <tr key={idx}>
+                  <th>{idx + 1}</th>
+                  <td>{item.task_title} </td>
+                  <td>{item.task_count}</td>
+                  <td>{item.payable_amount}</td>
+                  <td>
+                    <div className="flex gap-2">
+                      <Link className="btn btn-primary">
+                        <FiEdit />
+                      </Link>
+                      <button
+                        onClick={() => handleDelete(item)}
+                        className="btn btn-error"
+                      >
+                        <FiTrash />
+                      </button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>
