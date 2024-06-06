@@ -2,11 +2,37 @@ import React from "react";
 import useUser from "../../../Hooks/useUser";
 import { FiTrash } from "react-icons/fi";
 import { FaUser, FaUsers } from "react-icons/fa";
+import axios from "axios";
+import Swal from "sweetalert2";
 
 const ManageUsers = () => {
   const [data, isPending, refetch] = useUser();
 
- 
+  const handleDelete = (task) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/userDelete/${task._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
+
   return (
     <div>
       <div>
@@ -70,7 +96,7 @@ const ManageUsers = () => {
                         </li>
                       </ul>
                     </div>
-                    <button className="btn btn-error">
+                    <button onClick={() => handleDelete(item)} className="btn btn-error">
                       <FiTrash />
                     </button>
                   </th>
