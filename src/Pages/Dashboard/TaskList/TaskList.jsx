@@ -26,7 +26,7 @@ const TaskList = () => {
               <span>Task quantity: {item.task_count}</span>
               <span>Submission Date: {item.completion_date}</span>
               <div className="card-actions justify-end">
-                <Link to={`/jobdetails`} className="btn btn-primary">View Details</Link>
+                <Link to={`/dashboard/jobdetails/${item._id}`} className="btn btn-primary">View Details</Link>
               </div>
             </div>
           </div>

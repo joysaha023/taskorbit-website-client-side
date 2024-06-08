@@ -18,7 +18,8 @@ import ManageTask from "../Pages/Dashboard/ManageTask/ManageTask";
 import PrivateRoutes from "./PrivateRoutes";
 import Contact from "../Pages/Contact/Contact";
 import Taskupdate from "../Pages/Dashboard/Taskupdate/Taskupdate";
-import JobDetails from "../Pages/JobDetails/JobDetails";
+import JobDetails from "../Pages/Dashboard/JobDetails/JobDetails";
+
 
 
 const router = createBrowserRouter([
@@ -38,10 +39,7 @@ const router = createBrowserRouter([
         path: "/contact",
         element: <Contact></Contact>
       },
-      {
-        path: "/jobdetails",
-        element: <JobDetails></JobDetails>
-      }
+      
     ],
   },
   {
@@ -70,6 +68,10 @@ const router = createBrowserRouter([
       {
         path: 'workersubmission',
         element: <WorkerSubmission></WorkerSubmission>
+      },
+      {
+        path: 'jobdetails/:id',
+        element: <JobDetails></JobDetails>
       },
 
       //Task creator routes
