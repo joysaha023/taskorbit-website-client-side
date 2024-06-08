@@ -18,7 +18,7 @@ const Login = () => {
     .then(result => {
         console.log(result.user)
         toast.success('success')
-        navigate("/dashboard")
+        navigate("/")
     })
     .catch(error => {
         toast.error('incorrect password')
@@ -43,7 +43,7 @@ const Login = () => {
         });
         console.log(result.user)
         toast.success("Login success")
-        navigate("/dashboard")
+        navigate("/")
     })
     .catch()
   }

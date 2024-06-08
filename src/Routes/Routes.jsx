@@ -30,7 +30,7 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/dashboard/tasklist",
+        path: "/",
         element: <TaskList></TaskList>
       },
       {

@@ -108,9 +108,9 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-              <Link to="/dashboard" className="btn">
-                Dashboard
-              </Link>
+              {data?.role === "TaskCreator" && <Link className="btn" to="/dashboard/creatorHome">Dashboard</Link>}
+              {data?.role === "worker" && <Link className="btn" to="/dashboard/workerhome">Dashboard</Link>}
+              {data?.role === "admin" && <Link className="btn" to="/dashboard/adminHome">Dashboard</Link>}
               <button
                 onClick={handlelogout}
                 className="btn btn-md rounded-full btn-error"
