@@ -4,15 +4,10 @@ import React from "react";
 import { FiEdit, FiTrash } from "react-icons/fi";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useTask from "../../../Hooks/useTask";
 
 const CreatorTask = () => {
-  const { data: task = [], refetch } = useQuery({
-    queryKey: ["task"],
-    queryFn: async () => {
-      const res = await axios.get("http://localhost:5000/task");
-      return res.data;
-    },
-  });
+ const [task, refetch] = useTask()
 
   const handleDelete = (task) => {
     Swal.fire({
