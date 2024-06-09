@@ -99,7 +99,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center justify-center gap-2">
               <div>
                 <button className="btn btn-sm  rounded-2xl ">
                   Coin :<div className="">{data?.coin}</div>
@@ -161,14 +161,14 @@ const Navbar = () => {
               </button>
             </div>
           ) : (
-            <div>
+            <div className="flex items-center justify-center gap-2">
               <div className="hidden md:flex">
                 <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
               </div>
-              <Link to="/login" className="btn">
+              <Link to="/login" className="btn rounded-2xl">
                 Login
               </Link>
-              <Link to="/register" className="btn hidden md:flex">
+              <Link to="/register" className="btn hidden rounded-2xl md:flex">
                 Register
               </Link>
             </div>

@@ -8,7 +8,7 @@ const RedirectButton = ({videoUrl}) => {
     };
 
     return (
-        <button onClick={handleRedirect} className='btn '>
+        <button onClick={handleRedirect} className='btn rounded-2xl'>
             <MdOndemandVideo /> Demo
         </button>
     );
