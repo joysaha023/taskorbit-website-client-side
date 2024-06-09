@@ -42,15 +42,42 @@ const Navbar = () => {
               tabIndex={0}
               className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
             >
-              <li>
-                <Link to="/">Home</Link>
+              {
+                user ? (<div><li>
+                  {data?.role === "TaskCreator" && (
+                    <Link className="btn" to="/dashboard/creatorHome">
+                      Dashboard
+                    </Link>
+                  )}
+                  {data?.role === "worker" && (
+                    <Link className="btn" to="/dashboard/workerhome">
+                      Dashboard
+                    </Link>
+                  )}
+                  {data?.role === "admin" && (
+                    <Link className="btn" to="/dashboard/adminHome">
+                      Dashboard
+                    </Link>
+                  )}
+                </li>
+                <li>
+                  <button
+                    onClick={handlelogout}
+                    className="btn btn-md rounded-full btn-error"
+                  >
+                    Log Out
+                  </button>
+                </li></div>) : ( <div><li>
+                <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
               </li>
               <li>
-                <Link to="/dashboard/tasklist">Tasks</Link>
-              </li>
-              <li>
-                <Link to="/contact">Contact Us</Link>
-              </li>
+                <Link to="/register" className="btn">
+                  Register
+                </Link>
+              </li></div>)
+              }
+              
+             
             </ul>
           </div>
           <Link to="/">
@@ -59,7 +86,7 @@ const Navbar = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
+            {/* <li>
               <Link to="/">Home</Link>
             </li>
             <li>
@@ -67,14 +94,14 @@ const Navbar = () => {
             </li>
             <li>
               <a>Contact Us</a>
-            </li>
+            </li> */}
           </ul>
         </div>
         <div className="navbar-end">
           {user ? (
-            <div className="flex">
+            <div className="flex items-center gap-2">
               <div>
-                <button className="btn">
+                <button className="btn btn-sm  rounded-2xl ">
                   Coin :<div className="">{data?.coin}</div>
                 </button>
               </div>
@@ -108,23 +135,40 @@ const Navbar = () => {
                   </li>
                 </ul>
               </div>
-              {data?.role === "TaskCreator" && <Link className="btn" to="/dashboard/creatorHome">Dashboard</Link>}
-              {data?.role === "worker" && <Link className="btn" to="/dashboard/workerhome">Dashboard</Link>}
-              {data?.role === "admin" && <Link className="btn" to="/dashboard/adminHome">Dashboard</Link>}
+              {data?.role === "TaskCreator" && (
+                <Link
+                  className="btn hidden rounded-2xl md:flex"
+                  to="/dashboard/creatorHome"
+                >
+                  Dashboard
+                </Link>
+              )}
+              {data?.role === "worker" && (
+                <Link className="btn hidden rounded-2xl md:flex" to="/dashboard/workerhome">
+                  Dashboard
+                </Link>
+              )}
+              {data?.role === "admin" && (
+                <Link className="btn hidden rounded-2xl md:flex" to="/dashboard/adminHome">
+                  Dashboard
+                </Link>
+              )}
               <button
                 onClick={handlelogout}
-                className="btn btn-md rounded-full btn-error"
+                className="btn btn-md hidden md:flex rounded-2xl btn-error"
               >
                 Log Out
               </button>
             </div>
           ) : (
             <div>
-              <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
+              <div className="hidden md:flex">
+                <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
+              </div>
               <Link to="/login" className="btn">
                 Login
               </Link>
-              <Link to="/register" className="btn">
+              <Link to="/register" className="btn hidden md:flex">
                 Register
               </Link>
             </div>
