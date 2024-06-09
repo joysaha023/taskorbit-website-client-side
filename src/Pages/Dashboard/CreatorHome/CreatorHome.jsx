@@ -19,7 +19,7 @@ const CreatorHome = () => {
   });
 
   const handleStatus = async (id, previous, status) => {
-    console.log(id, previous, status);
+    
     const { data } = await axios.patch(
       `http://localhost:5000/updateStatus/${id}`,
       { status }

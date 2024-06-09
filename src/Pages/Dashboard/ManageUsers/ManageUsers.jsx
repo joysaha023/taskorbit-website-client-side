@@ -33,6 +33,16 @@ const ManageUsers = () => {
     });
   };
 
+  const handleUser = async (id, role) =>  {
+    console.log(id, role)
+    const { data } = await axios.patch(
+      `http://localhost:5000/userRole/${id}`,
+      { role }
+    );
+    console.log(data)
+    refetch();
+  }
+
   return (
     <div>
       <div>
@@ -86,13 +96,13 @@ const ManageUsers = () => {
                         className="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52"
                       >
                         <li>
-                          <a>Admin</a>
+                          <a onClick={()=> {handleUser(item._id, 'admin')}}>Admin</a>
                         </li>
                         <li>
-                          <a>Task-Creator</a>
+                          <a onClick={()=> {handleUser(item._id, 'TaskCreator')}}>Task-Creator</a>
                         </li>
                         <li>
-                          <a>Worker</a>
+                          <a onClick={()=> {handleUser(item._id, 'worker')}}>Worker</a>
                         </li>
                       </ul>
                     </div>
