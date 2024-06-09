@@ -2,9 +2,17 @@ import React from "react";
 import useTask from "../../../Hooks/useTask";
 import Swal from "sweetalert2";
 import axios from "axios";
+import {
+  Description,
+  Dialog,
+  DialogPanel,
+  DialogTitle,
+} from "@headlessui/react";
+import { useState } from "react";
 
 const ManageTask = () => {
   const [task, refetch] = useTask();
+  const [isOpen, setIsOpen] = useState(false);
 
   const handleDelete = (task) => {
     Swal.fire({
@@ -70,8 +78,42 @@ const ManageTask = () => {
                     <button className="btn  btn-ghost btn-xs">Available</button>
                   </td>
                   <td className="flex">
-                    
-                    <button onClick={()=> handleDelete(item)} className="btn btn-error">Delete</button>
+                    <div>
+                      <button className="btn" onClick={() => setIsOpen(true)}>
+                        View
+                      </button>
+                      <Dialog
+                        open={isOpen}
+                        onClose={() => setIsOpen(false)}
+                        className="relative z-50"
+                      >
+                        <div className="fixed inset-0 flex w-screen items-center justify-center p-4">
+                          <DialogPanel className="max-w-lg space-y-4 border bg-white p-12">
+                            <DialogTitle className="font-bold">
+                              {item.task_title}
+                            </DialogTitle>
+                            <Description>
+                              This will permanently deactivate your account
+                            </Description>
+                            <p>
+                              {item.task_details}
+                            </p>
+                            <div className="flex gap-4">
+                              <button className="btn" onClick={() => setIsOpen(false)}>
+                                Cancel
+                              </button>
+                             
+                            </div>
+                          </DialogPanel>
+                        </div>
+                      </Dialog>
+                    </div>
+                    <button
+                      onClick={() => handleDelete(item)}
+                      className="btn btn-error"
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               ))}
