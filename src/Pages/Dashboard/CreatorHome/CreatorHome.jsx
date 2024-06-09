@@ -8,7 +8,7 @@ import axios from "axios";
 const CreatorHome = () => {
   const { user } = useAuth();
 
-  const { data } = useQuery({
+  const { data, refetch } = useQuery({
     queryKey: ["taskDetails"],
     queryFn: async () => {
       const res = await axios.get(
@@ -17,8 +17,16 @@ const CreatorHome = () => {
       return res.data;
     },
   });
-  
-  
+
+  const handleStatus = async (id, previous, status) => {
+    console.log(id, previous, status);
+    const { data } = await axios.patch(
+      `http://localhost:5000/updateStatus/${id}`,
+      { status }
+    );
+    console.log(data)
+    refetch();
+  };
 
   return (
     <div>
@@ -60,51 +68,71 @@ const CreatorHome = () => {
                   <th>Task Title</th>
                   <th>Amount</th>
                   <th>View Submission</th>
+                  <th>Status</th>
                   <th>Action</th>
                 </tr>
               </thead>
               <tbody>
-                {data?.map((item, idx)=>  <tr key={item._id}>
-                  <th>{idx +1}</th>
-                  <th className="font-normal">
-                    {item.worker_name} <br /> <span> {item.worker_email}</span>
-                  </th>
-                  <td>{item.task_title}</td>
-                  <td>{item.payable_amount}</td>
-                  <td>
-                    {/* Open the modal using document.getElementById('ID').showModal() method */}
-                    <button
-                      className="btn"
-                      onClick={() =>
-                        document.getElementById("my_modal_5").showModal()
-                      }
-                    >
-                      View
-                    </button>
-                    <dialog
-                      id="my_modal_5"
-                      className="modal modal-bottom sm:modal-middle"
-                    >
-                      <div className="modal-box">
-                        <h3 className="font-bold text-lg">{item.submission_details}</h3>
-                        <p className="py-4">
-                          Press ESC key or click the button below to close
-                        </p>
-                        <div className="modal-action">
-                          <form method="dialog">
-                            {/* if there is a button in form, it will close the modal */}
-                            <button className="btn">Close</button>
-                          </form>
+                {data?.map((item, idx) => (
+                  <tr key={item._id}>
+                    <th>{idx + 1}</th>
+                    <th className="font-normal">
+                      {item.worker_name} <br />{" "}
+                      <span> {item.worker_email}</span>
+                    </th>
+                    <td>{item.task_title}</td>
+                    <td>{item.payable_amount}</td>
+                    <td>
+                      {/* Open the modal using document.getElementById('ID').showModal() method */}
+                      <button
+                        className="btn"
+                        onClick={() =>
+                          document.getElementById("my_modal_5").showModal()
+                        }
+                      >
+                        View
+                      </button>
+                      <dialog
+                        id="my_modal_5"
+                        className="modal modal-bottom sm:modal-middle"
+                      >
+                        <div className="modal-box">
+                          <h3 className="font-bold text-lg">
+                            {item.submission_details}
+                          </h3>
+                          <p className="py-4">
+                            Press ESC key or click the button below to close
+                          </p>
+                          <div className="modal-action">
+                            <form method="dialog">
+                              {/* if there is a button in form, it will close the modal */}
+                              <button className="btn">Close</button>
+                            </form>
+                          </div>
                         </div>
-                      </div>
-                    </dialog>
-                  </td>
-                  <td >
-                    <button className="text-xl mr-4"><IoCheckmarkSharp /></button>
-                    <button className="text-xl"><TiDeleteOutline /></button>
-                  </td>
-                </tr>)}
-               
+                      </dialog>
+                    </td>
+                    <td>{item.status}</td>
+                    <td>
+                      <button
+                        onClick={() =>
+                          handleStatus(item._id, item.status, "Approved")
+                        }
+                        className="text-xl mr-4"
+                      >
+                        <IoCheckmarkSharp />
+                      </button>
+                      <button
+                        onClick={() =>
+                          handleStatus(item._id, item.status, "Rejected")
+                        }
+                        className="text-xl"
+                      >
+                        <TiDeleteOutline />
+                      </button>
+                    </td>
+                  </tr>
+                ))}
               </tbody>
             </table>
           </div>
