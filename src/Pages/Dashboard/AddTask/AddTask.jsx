@@ -2,11 +2,14 @@ import React, { useState } from "react";
 import useAuth from "../../../Hooks/useAuth";
 import axios from "axios";
 import { imageUpload } from "../../../api/utils";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 
 const AddTask = () => {
   const {user} = useAuth();
+  const navigate = useNavigate();
   
  
 
@@ -38,6 +41,14 @@ const AddTask = () => {
     .then((res) => res.json())
     .then((data) => {
       console.log(data)
+      Swal.fire({
+        position: "center",
+        icon: "success",
+        title: "Your task has been added",
+        showConfirmButton: false,
+        timer: 1500
+      });
+      navigate('/dashboard/creatortask')
     })
     
   }

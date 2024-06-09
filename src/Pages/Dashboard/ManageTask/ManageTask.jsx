@@ -1,10 +1,35 @@
 import React from "react";
 import useTask from "../../../Hooks/useTask";
+import Swal from "sweetalert2";
+import axios from "axios";
 
 const ManageTask = () => {
   const [task, refetch] = useTask();
 
-  
+  const handleDelete = (task) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios.delete(`http://localhost:5000/delete/${task._id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -45,33 +70,8 @@ const ManageTask = () => {
                     <button className="btn  btn-ghost btn-xs">Available</button>
                   </td>
                   <td className="flex">
-                    <div>
-                      <button
-                        className="btn"
-                        onClick={() =>
-                          document.getElementById("my_modal_1").showModal()
-                        }
-                      >
-                        View
-                      </button>
-                      <dialog id="my_modal_1" className="modal">
-                        <div className="modal-box">
-                            <img src={item.task_img_url} alt="" />
-                          <h3 className="font-bold text-lg">{item.task_title}</h3>
-                          <p className="py-4">
-                            {item.task_detail}
-                          </p>
-                          <p>{item.submission_info}</p>
-                          <div className="modal-action">
-                            <form method="dialog">
-                              {/* if there is a button in form, it will close the modal */}
-                              <button className="btn">Close</button>
-                            </form>
-                          </div>
-                        </div>
-                      </dialog>
-                    </div>
-                    <button className="btn btn-error">Delete</button>
+                    
+                    <button onClick={()=> handleDelete(item)} className="btn btn-error">Delete</button>
                   </td>
                 </tr>
               ))}

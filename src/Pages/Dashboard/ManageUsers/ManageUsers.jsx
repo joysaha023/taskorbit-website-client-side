@@ -4,6 +4,7 @@ import { FiTrash } from "react-icons/fi";
 import { FaUser, FaUsers } from "react-icons/fa";
 import axios from "axios";
 import Swal from "sweetalert2";
+import toast from "react-hot-toast";
 
 const ManageUsers = () => {
   const [data, isPending, refetch] = useUser();
@@ -39,7 +40,7 @@ const ManageUsers = () => {
       `http://localhost:5000/userRole/${id}`,
       { role }
     );
-    console.log(data)
+    toast.success("User Role Changed")
     refetch();
   }
 
