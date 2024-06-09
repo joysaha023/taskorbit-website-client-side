@@ -1,11 +1,37 @@
 import React from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Taskupdate = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const task_title = form.title.value;
+    const task_detail = form.taskdetails.value;
+    const submission_info = form.submission.value;
+    const updateTask = { task_detail, task_title, submission_info };
 
-    const handleSubmit = (e) => {
-        
-    }
+    fetch(`http://localhost:5000/updateTask/${id}`, {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(updateTask),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        Swal.fire({
+          title: "Update Changes",
+          text: "Your item has been updated.",
+          icon: "success",
+        });
+        console.log(data)
+        navigate('/dashboard/creatortask')
+      });
+  };
 
   return (
     <div>
