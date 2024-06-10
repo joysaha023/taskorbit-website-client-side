@@ -19,6 +19,7 @@ import PrivateRoutes from "./PrivateRoutes";
 import Contact from "../Pages/Contact/Contact";
 import Taskupdate from "../Pages/Dashboard/Taskupdate/Taskupdate";
 import JobDetails from "../Pages/Dashboard/JobDetails/JobDetails";
+import ErrorPage from "../Pages/ErroPage/ErrorPage";
 
 
 
@@ -26,6 +27,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",

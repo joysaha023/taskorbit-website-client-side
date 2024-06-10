@@ -13,8 +13,13 @@ const Banner = () => {
           src="https://i.ibb.co/bK0jLY2/banner1.jpg"
         />
         <div className="text-box">
-          <h2 className="text-xl md:text-4xl font-bold">Hello Headers work</h2>
-          <p className="text-xs md:text-base font-normal">Legend 1</p>
+          <h2 className="text-xl md:text-4xl font-bold">
+            Get Started Right Away with Easy-to-Customize Templates
+          </h2>
+          <p className="text-xs md:text-base mt-2 font-normal">
+            Create and Use Template for campaign Clone Template Edit/Update
+            Template Variables, Text Captcha
+          </p>
         </div>
       </div>
       <div>
@@ -23,8 +28,12 @@ const Banner = () => {
           src="https://i.ibb.co/Wv6CjQN/banner2.jpg"
         />
         <div className="text-box">
-          <h2 className="text-xl md:text-4xl font-bold">Hello Headers work</h2>
-          <p className="text-xs md:text-base font-normal">Legend 1</p>
+          <h2 className="text-xl md:text-4xl font-bold">
+            Two Step Verification, Rating
+          </h2>
+          <p className="text-xs md:text-base mt-2 font-normal">
+            Multiple Verification Multiple Rating Options
+          </p>
         </div>
       </div>
       <div>
@@ -33,8 +42,12 @@ const Banner = () => {
           src="https://i.ibb.co/4p2Hb8f/banner3.jpg"
         />
         <div className="text-box">
-          <h2 className="text-xl md:text-4xl font-bold">Hello Headers work</h2>
-          <p className="text-xs md:text-base font-normal">Legend 1</p>
+          <h2 className="text-xl md:text-4xl font-bold">
+            Vcode Generation, Autosubmission
+          </h2>
+          <p className="text-xs md:text-base mt-2 font-normal">
+            VCode generation Auto Submission to MW
+          </p>
         </div>
       </div>
       <div>
@@ -43,8 +56,13 @@ const Banner = () => {
           src="https://i.ibb.co/VWGyzLb/banner4.jpg"
         />
         <div className="text-box">
-          <h2 className="text-xl md:text-4xl font-bold">Hello Headers work</h2>
-          <p className="text-xs md:text-base font-normal">Legend 1</p>
+          <h2 className="text-xl md:text-4xl  font-bold">
+            Get Started Right Away with Easy-to-Customize Templates
+          </h2>
+          <p className="text-xs md:text-base mt-2 font-normal">
+            Create and Use Template for campaign Clone Template Edit/Update
+            Template Variables, Text Captcha
+          </p>
         </div>
       </div>
     </Carousel>
