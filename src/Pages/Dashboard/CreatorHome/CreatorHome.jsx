@@ -12,7 +12,7 @@ const CreatorHome = () => {
     queryKey: ["taskDetails"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/reviewData/${user.email}`
+        `https://taskorbit-website-server-side.vercel.app/reviewData/${user.email}`
       );
       return res.data;
     },
@@ -21,7 +21,7 @@ const CreatorHome = () => {
   const handleStatus = async (id, previous, status) => {
     
     const { data } = await axios.patch(
-      `http://localhost:5000/updateStatus/${id}`,
+      `https://taskorbit-website-server-side.vercel.app/updateStatus/${id}`,
       { status }
     );
     console.log(data)

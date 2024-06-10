@@ -45,7 +45,7 @@ const Register = () => {
     createuser(email, password)
       .then((result) => {
         updateUserProfile(name, image).then(() => {
-          fetch("http://localhost:5000/users", {
+          fetch("https://taskorbit-website-server-side.vercel.app/users", {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -73,7 +73,7 @@ const Register = () => {
         const role = "worker";
         const coin = 10;
         const userData = { name, email, image, role, coin };
-        fetch("http://localhost:5000/users", {
+        fetch("https://taskorbit-website-server-side.vercel.app/users", {
           method: "POST",
           headers: {
             "content-type": "application/json",

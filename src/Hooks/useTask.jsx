@@ -7,7 +7,7 @@ const useTask = () => {
     const { data: task = [], refetch } = useQuery({
         queryKey: ["task"],
         queryFn: async () => {
-          const res = await axios.get("http://localhost:5000/task");
+          const res = await axios.get("https://taskorbit-website-server-side.vercel.app/task");
           return res.data;
         },
       });

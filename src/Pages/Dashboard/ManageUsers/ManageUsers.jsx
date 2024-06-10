@@ -20,7 +20,7 @@ const ManageUsers = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/userDelete/${task._id}`).then((res) => {
+        axios.delete(`https://taskorbit-website-server-side.vercel.app/userDelete/${task._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({
@@ -37,7 +37,7 @@ const ManageUsers = () => {
   const handleUser = async (id, role) =>  {
     console.log(id, role)
     const { data } = await axios.patch(
-      `http://localhost:5000/userRole/${id}`,
+      `https://taskorbit-website-server-side.vercel.app/userRole/${id}`,
       { role }
     );
     toast.success("User Role Changed")

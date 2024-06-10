@@ -14,7 +14,7 @@ const Taskupdate = () => {
     const submission_info = form.submission.value;
     const updateTask = { task_detail, task_title, submission_info };
 
-    fetch(`http://localhost:5000/updateTask/${id}`, {
+    fetch(`https://taskorbit-website-server-side.vercel.app/updateTask/${id}`, {
       method: "PUT",
       headers: {
         "content-type": "application/json",

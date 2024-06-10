@@ -12,7 +12,7 @@ const WorkerHome = () => {
     queryKey: ["approveData"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/approveData/${user.email}`
+        `https://taskorbit-website-server-side.vercel.app/approveData/${user.email}`
       );
       return res.data;
     },

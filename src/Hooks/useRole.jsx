@@ -9,7 +9,7 @@ const useRole = () => {
     const {data, isPending} =useQuery({
         queryKey: [user?.email],
         queryFn: async() => {
-            const res = await axios.get(`http://localhost:5000/users/role/${user.email}`)
+            const res = await axios.get(`https://taskorbit-website-server-side.vercel.app/users/role/${user.email}`)
            
             return res.data;
         }

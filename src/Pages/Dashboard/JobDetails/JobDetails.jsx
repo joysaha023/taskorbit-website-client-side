@@ -11,7 +11,7 @@ const JobDetails = () => {
   const { data } = useQuery({
     queryKey: ["taskDetails"],
     queryFn: async () => {
-      const res = await axios.get(`http://localhost:5000/jobdetails/${id}`);
+      const res = await axios.get(`https://taskorbit-website-server-side.vercel.app/jobdetails/${id}`);
       return res.data;
     },
   });
@@ -47,7 +47,7 @@ const JobDetails = () => {
     };
     
 
-    fetch('http://localhost:5000/submitDetails', {
+    fetch('https://taskorbit-website-server-side.vercel.app/submitDetails', {
         method: 'POST',
         headers: {
             'content-type' : 'application/json',

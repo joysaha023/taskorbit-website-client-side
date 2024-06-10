@@ -20,7 +20,7 @@ const CreatorTask = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        axios.delete(`http://localhost:5000/delete/${task._id}`).then((res) => {
+        axios.delete(`https://taskorbit-website-server-side.vercel.app/delete/${task._id}`).then((res) => {
           if (res.data.deletedCount > 0) {
             refetch();
             Swal.fire({

@@ -10,7 +10,7 @@ const WorkerSubmission = () => {
     queryKey: ["taskDetails"],
     queryFn: async () => {
       const res = await axios.get(
-        `http://localhost:5000/submitData/${user.email}`
+        `https://taskorbit-website-server-side.vercel.app/submitData/${user.email}`
       );
       return res.data;
     },

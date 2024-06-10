@@ -31,7 +31,7 @@ const AddTask = () => {
     const addTaskData = {task_title, submission_info, task_detail, task_count, task_img_url, current_time, payable_amount, completion_date, creator_email, creator_name}
     
    
-    fetch('http://localhost:5000/addtask', {
+    fetch('https://taskorbit-website-server-side.vercel.app/addtask', {
       method: "POST",
       headers: {
         "content-type" : "application/json",
