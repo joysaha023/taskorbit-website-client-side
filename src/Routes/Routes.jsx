@@ -20,6 +20,7 @@ import Contact from "../Pages/Contact/Contact";
 import Taskupdate from "../Pages/Dashboard/Taskupdate/Taskupdate";
 import JobDetails from "../Pages/Dashboard/JobDetails/JobDetails";
 import ErrorPage from "../Pages/ErroPage/ErrorPage";
+import Payment from "../Pages/Dashboard/Payment/Payment";
 
 
 
@@ -92,6 +93,10 @@ const router = createBrowserRouter([
       {
         path: 'parchaseCoin',
         element: <PurchaseCoin></PurchaseCoin>
+      },
+      {
+        path: 'payment',
+        element: <Payment></Payment>
       },
       {
         path: 'paymentHistory',
