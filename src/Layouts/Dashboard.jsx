@@ -3,6 +3,7 @@ import { Link, Outlet } from "react-router-dom";
 import SideBar from "../Pages/Dashboard/SideBar/SideBar";
 import logo from "../assets/logo.png";
 import useRole from "../Hooks/useRole";
+import Footer from "../Components/Shared/Footer/Footer";
 
 
 const Dashboard = () => {
@@ -39,7 +40,9 @@ const [data] = useRole()
               <ul
                 tabIndex={0}
                 className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
-              ></ul>
+              >
+                
+              </ul>
             </div>
             <Link to="/">
               <img className="w-full h-[40px] md:h-[60px]" src={logo} alt="" />
@@ -98,6 +101,7 @@ const [data] = useRole()
         {/* Outlet --> Dynamic content */}
         <div className="flex-1">
           <Outlet></Outlet>
+         
         </div>
       </div>
     </div>

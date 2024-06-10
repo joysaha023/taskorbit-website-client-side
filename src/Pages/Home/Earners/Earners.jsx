@@ -1,31 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 const Earners = () => {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    fetch("https://taskorbit-website-server-side.vercel.app/topEarners")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
+
   return (
     <div className="max-w-6xl mx-auto px-2">
       <div className="text-center my-6">
         <h2 className="text-3xl md:text-4xl font-bold">Top Earners</h2>
       </div>
-      <div>
-        <div className="card w-full bg-base-100 shadow-xl">
-          <figure>
-            <img
-              src="https://img.daisyui.com/images/stock/photo-1606107557195-0e29a4b5b4aa.jpg"
-              alt="Shoes"
-            />
-          </figure>
-          <div className="card-body">
-            <h2 className="card-title">
-              Shoes!
-              <div className="badge badge-secondary">NEW</div>
-            </h2>
-            <p>If a dog chews shoes whose shoes does he choose?</p>
-            <div className="card-actions justify-end">
-              <div className="badge badge-outline">Fashion</div>
-              <div className="badge badge-outline">Products</div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {data.map((item) => (
+          <div key={item._id} className="card pt-6 w-full bg-base-100 shadow-xl">
+            <figure>
+              <img
+                className="w-[100px] h-[100px] rounded-full"
+                src={item.profile_picture_url}
+                alt="iamge"
+              />
+            </figure>
+            <div className="card-body">
+              <h2 className="card-title">
+                {item.full_name}
+             
+              </h2>
+              <p>Task Completed: {item.task_completion}</p>
+              <p>Total Earning Coin: {item.earned_coins}</p>
             </div>
           </div>
-        </div>
+        ))}
       </div>
     </div>
   );
