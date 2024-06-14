@@ -9,9 +9,9 @@ const Footer = () => {
         <aside>
         <Link to="/" ><img className="w-full h-[40px] md:h-[60px]" src={logo2} alt="" /></Link>
           <p>
-            ACME Industries Ltd.
+            Taskorbit Industries Ltd.
             <br />
-            Providing reliable tech since 1992
+            Providing micro job service since 2011
           </p>
         </aside>
         <nav>
