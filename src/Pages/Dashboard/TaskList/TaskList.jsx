@@ -28,6 +28,7 @@ const TaskList = () => {
               <div className="card-actions justify-end">
                 <Link to={`/dashboard/jobdetails/${item._id}`} className="btn btn-primary">View Details</Link>
               </div>
+              <p></p>
             </div>
           </div>
         ))}
