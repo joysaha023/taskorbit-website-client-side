@@ -101,7 +101,7 @@ const Navbar = () => {
           {user ? (
             <div className="flex items-center justify-center gap-2">
               <div>
-                <button className="btn btn-sm  rounded-2xl ">
+                <button className="btn btn-sm bg-[#ADD8E6] rounded-2xl ">
                   Coin :<div className="">{data?.coin}</div>
                 </button>
               </div>
@@ -137,25 +137,25 @@ const Navbar = () => {
               </div>
               {data?.role === "TaskCreator" && (
                 <Link
-                  className="btn hidden rounded-2xl md:flex"
+                  className="btn hidden bg-[#0077be] rounded-3xl text-white hover:text-black md:flex"
                   to="/dashboard/creatorHome"
                 >
                   Dashboard
                 </Link>
               )}
               {data?.role === "worker" && (
-                <Link className="btn hidden rounded-2xl md:flex" to="/dashboard/workerhome">
+                <Link className="btn hidden rounded-3xl bg-[#0077be] text-white hover:text-black md:flex" to="/dashboard/workerhome">
                   Dashboard
                 </Link>
               )}
               {data?.role === "admin" && (
-                <Link className="btn hidden rounded-2xl md:flex" to="/dashboard/adminHome">
+                <Link className="btn hidden bg-[#0077be] rounded-3xl md:flex" to="/dashboard/adminHome">
                   Dashboard
                 </Link>
               )}
               <button
                 onClick={handlelogout}
-                className="btn btn-md hidden md:flex rounded-2xl btn-error"
+                className="btn btn-md hidden md:flex rounded-3xl text-white btn-error"
               >
                 Log Out
               </button>
