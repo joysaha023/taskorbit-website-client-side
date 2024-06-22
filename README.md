@@ -5,7 +5,7 @@ This website is very amazing where user can job in online through of micro task.
 Live Site URL: [TaskOrbit](https://taskorbit-19.web.app/)
 
 <a href="https://taskorbit-19.web.app/">
-  <img src="https://github.com/programming-hero-web-course1/b9a12-client-side-joysaha023/blob/main/demo.png" />
+  <img src="https://github.com/joysaha023/taskorbit-website-client-side/blob/main/demo.png" />
 </a>
 
 
