@@ -1,9 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 const PurchaseCoin = () => {
   return (
     <div>
-      <div >
+      <div>
         <h2 className="text-2xl text-center mb-4 font-bold">Purchase Coin</h2>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 p-4">
@@ -11,7 +12,12 @@ const PurchaseCoin = () => {
           <div className="card-body">
             <h2 className="card-title mb-6">10 coins = $1</h2>
             <div className="card-actions ">
-              <button className="btn  btn-block btn-primary">Buy Now</button>
+              <Link
+                to="/dashboard/payment"
+                className="btn  btn-block btn-primary"
+              >
+                Buy Now
+              </Link>
             </div>
           </div>
         </div>
@@ -19,7 +25,12 @@ const PurchaseCoin = () => {
           <div className="card-body">
             <h2 className="card-title mb-6">100 coins = $9</h2>
             <div className="card-actions ">
-              <button className="btn btn-block btn-primary">Buy Now</button>
+              <Link
+                to="/dashboard/payment"
+                className="btn  btn-block btn-primary"
+              >
+                Buy Now
+              </Link>
             </div>
           </div>
         </div>
@@ -27,7 +38,12 @@ const PurchaseCoin = () => {
           <div className="card-body">
             <h2 className="card-title mb-6">500 coins = $19</h2>
             <div className="card-actions ">
-              <button className="btn btn-block btn-primary">Buy Now</button>
+              <Link
+                to="/dashboard/payment"
+                className="btn  btn-block btn-primary"
+              >
+                Buy Now
+              </Link>
             </div>
           </div>
         </div>
@@ -35,7 +51,12 @@ const PurchaseCoin = () => {
           <div className="card-body">
             <h2 className="card-title mb-6">1000 coins = $39</h2>
             <div className="card-actions ">
-              <button className="btn btn-block btn-primary">Buy Now</button>
+              <Link
+                to="/dashboard/payment"
+                className="btn  btn-block btn-primary"
+              >
+                Buy Now
+              </Link>
             </div>
           </div>
         </div>
