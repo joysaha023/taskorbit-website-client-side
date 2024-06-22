@@ -8,7 +8,7 @@ const RedirectButton = ({videoUrl}) => {
     };
 
     return (
-        <button onClick={handleRedirect} className='btn bg-[#808080] text-white rounded-3xl'>
+        <button onClick={handleRedirect} className='btn bg-[#557aa7] hover:text-black text-white rounded-3xl'>
             <MdOndemandVideo /> Demo
         </button>
     );

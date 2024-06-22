@@ -11,12 +11,12 @@ const Earners = () => {
 
   return (
     <div className="max-w-6xl mx-auto px-2">
-      <div className="text-center my-6">
+      <div className="text-center mt-6 md:mt-16">
         <h2 className="text-3xl md:text-4xl font-bold">Top Earners</h2>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 mt-6 lg:grid-cols-3 gap-6">
         {data.map((item) => (
-          <div key={item._id} className="card pt-6 w-full bg-base-100 shadow-xl">
+          <div key={item._id} className="card pt-6 w-full bg-base-100 border">
             <figure>
               <img
                 className="w-[100px] h-[100px] rounded-full"
