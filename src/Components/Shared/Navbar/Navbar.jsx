@@ -165,10 +165,10 @@ const Navbar = () => {
               <div className="hidden md:flex">
                 <RedirectButton videoUrl="https://www.youtube.com/watch?v=Dn_QYofxH34"></RedirectButton>
               </div>
-              <Link to="/login" className="btn rounded-2xl">
+              <Link to="/login" className="btn bg-[#008080] text-white rounded-3xl">
                 Login
               </Link>
-              <Link to="/register" className="btn hidden rounded-2xl md:flex">
+              <Link to="/register" className="btn bg-[#008080] text-white hidden rounded-3xl md:flex">
                 Register
               </Link>
             </div>
