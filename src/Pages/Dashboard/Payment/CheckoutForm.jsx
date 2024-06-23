@@ -1,9 +1,16 @@
 import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
-import React from 'react';
+import axios from 'axios';
+import React, { useEffect, useState } from 'react';
 
 const CheckoutForm = () => {
+    const [error, setError] = useState('');
     const stripe = useStripe();
     const elements = useElements();
+
+    useEffect(() => {
+      axios.post('https://taskorbit-website-server-side.vercel.app/create-payment-intent')
+    }, [])
+
     const handleSubmit = async (event) => {
         event.preventDefault();
 
@@ -24,9 +31,11 @@ const CheckoutForm = () => {
 
         if(error){
             console.log('payment error', error)
+            setError(error.message)
         }
         else{
             console.log('payment method', paymentMethod)
+            setError('');
         }
     }
 
@@ -51,6 +60,7 @@ const CheckoutForm = () => {
       <button className='btn btn-primary my-6' type="submit" disabled={!stripe}>
         Pay
       </button>
+      <p className='text-red-600'>{error}</p>
         </form>
     );
 };
